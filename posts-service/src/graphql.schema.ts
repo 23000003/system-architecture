@@ -18,7 +18,7 @@ const postSchema = `
         deletePost(id: Int!): String!
     }
     type Subscription {
-        postAdded(): Post!
+        postAdded: Post
     }
 `
 

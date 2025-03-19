@@ -16,6 +16,7 @@ export default class PostServices {
 
     static async createPost(args: CreatePost) {
         const { title, content, authorId } = args;
+        
         pubsub.publish("POST_ADDED", { postAdded: args });
 
         return await prisma.post.create({
@@ -25,7 +26,7 @@ export default class PostServices {
                 authorId
             }
         });
-    }    
+    }       
 
     static async updatePost(args: UpdatePost) {
         const { id, title, content } = args;
