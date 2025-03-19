@@ -2,6 +2,7 @@ import { ApolloServer } from "apollo-server";
 import postSchema from "./graphql.schema";
 import postResolvers from "./graphql.resolvers";
 import SeedDatabase from "../prisma/seed";
+import { SubscriptionServer } from "subscriptions-transport-ws";
 
 const server = new ApolloServer({
     typeDefs: postSchema,

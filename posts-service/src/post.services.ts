@@ -1,6 +1,7 @@
 import prisma from "../prisma/prisma";
 import { CreatePost, UpdatePost } from "./type";
 import { GraphQLError } from 'graphql';
+import { pubsub } from "./graphql.resolvers";
 
 export default class PostServices {
     static async getAllPosts() {
@@ -15,6 +16,8 @@ export default class PostServices {
 
     static async createPost(args: CreatePost) {
         const { title, content, authorId } = args;
+        pubsub.publish("POST_ADDED", { postAdded: args });
+
         return await prisma.post.create({
             data: {
                 title,

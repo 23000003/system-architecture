@@ -17,6 +17,9 @@ const postSchema = `
         updatePost(id: Int!, title: String, content: String): Post
         deletePost(id: Int!): String!
     }
+    type Subscription {
+        postAdded(): Post!
+    }
 `
 
 export default postSchema;
